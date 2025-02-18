@@ -1,5 +1,7 @@
+import java.text.NumberFormat;
+import java.util.Locale;
 
-public class Ticket {
+public final class Ticket {
     private final String eventName;
     private final double price;
 
@@ -18,6 +20,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket for " + eventName + ", Price: " + price;
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US); // Change Locale as needed
+        return String.format("Ticket for %s, Price: %s", eventName, currencyFormat.format(price));
     }
 }
